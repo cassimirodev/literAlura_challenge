@@ -25,14 +25,7 @@ public class LiteraArulaApplication implements CommandLineRunner {
 		List<Book> books = gutendexRequest.requestAllBooks();
 
 		// Imprime os livros retornados
-		for (Book book : books) {
-			System.out.println("Título: " + book.titulo());
-			System.out.println("Autores: " + book.autores());
-			System.out.println("Linguagens: " + book.linguagens());
-			System.out.println("Quantidade de Downloads: " + book.quantidadeDownloads());
-			System.out.println("Sumário: " + book.sumario());
-			System.out.println("-----------------------------");
-		}
+
 	}
 
 
