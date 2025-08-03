@@ -60,6 +60,4 @@ public class BookEntity {
         this.sumario = book.sumario();
         this.quantidadeDownloads = book.quantidadeDownloads();
     }
-
-
 }
