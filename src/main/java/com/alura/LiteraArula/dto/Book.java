@@ -8,9 +8,9 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record Book (
-    @JsonProperty("title") @NotNull String titulo,
-    @JsonProperty("authors") @NotNull List<Person> autores,
-    @JsonProperty("languages") @NotNull List<String> linguagens,
-    @JsonProperty("download_count") @NotNull Integer quantidadeDownloads,
-    @JsonProperty("summaries") @NotNull List<String> sumario
+    @JsonProperty("title")  String titulo,
+    @JsonProperty("languages")  List<String> linguagens,
+    @JsonProperty("download_count")  Integer quantidadeDownloads,
+    @JsonProperty("summaries")  List<String> sumario,
+    @JsonProperty("authors") List<Autor> autor
 ) {}

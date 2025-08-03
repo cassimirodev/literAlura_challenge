@@ -1,4 +1,4 @@
-package com.alura.LiteraArula.BookRepository;
+package com.alura.LiteraArula.repository;
 
 import com.alura.LiteraArula.model.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
