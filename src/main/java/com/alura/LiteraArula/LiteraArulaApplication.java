@@ -32,5 +32,7 @@ public class LiteraArulaApplication implements CommandLineRunner {
 				.limit(3)
 				.forEach(System.out::println);
 
+		List<Book> apenasUmLivro = gutendexRequest.requestOnlyOneBook();
+		apenasUmLivro.forEach(System.out::println);
 	}
 }

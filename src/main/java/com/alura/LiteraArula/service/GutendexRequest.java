@@ -48,6 +48,36 @@ public class GutendexRequest {
             e.printStackTrace();
             throw new RuntimeException("Erro ao chamar API", e);
         }
-
     }
+
+    public List<Book> requestOnlyOneBook() {
+
+        var livroTeste = "Cranbook";
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://gutendex.com/books/?search=" + livroTeste))
+                    .GET()
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                System.out.print("Requisição OK! Livro encontrado" + response.body());
+            } else if (response.statusCode() == 404 ) {
+                throw new RuntimeException("Livro não encontrado!" +  response.statusCode());
+            } else {
+                throw new RuntimeException("Falha na requisição" +  response.statusCode());
+            }
+
+            String jsonBodyAllBooksResponse = response.body();
+            ObjectMapper mapper = new ObjectMapper();
+            GutendexResponse gutendexResponse = mapper.readValue(jsonBodyAllBooksResponse, GutendexResponse.class);
+
+            return gutendexResponse.results();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao chamar API", e);
+        }
+    }
+
 }
