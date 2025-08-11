@@ -1,7 +1,7 @@
-package com.alura.LiteraArula.service;
+package com.alura.LiteraAlura.service;
 
-import com.alura.LiteraArula.dto.Book;
-import com.alura.LiteraArula.dto.GutendexResponse;
+import com.alura.LiteraAlura.dto.Book;
+import com.alura.LiteraAlura.dto.GutendexResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
@@ -50,13 +50,12 @@ public class GutendexRequest {
         }
     }
 
-    public List<Book> requestOnlyOneBook() {
+    public List<Book> requestOnlyOneBook(String bookTitle) {
 
-        var livroTeste = "Cranbook";
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://gutendex.com/books/?search=" + livroTeste))
+                    .uri(URI.create("https://gutendex.com/books/?search=" + bookTitle))
                     .GET()
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

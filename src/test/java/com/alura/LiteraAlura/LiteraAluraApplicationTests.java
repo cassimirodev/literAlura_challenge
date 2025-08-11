@@ -1,10 +1,10 @@
-package com.alura.LiteraArula;
+package com.alura.LiteraAlura;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LiteraArulaApplicationTests {
+class LiteraAluraApplicationTests {
 
 	@Test
 	void contextLoads() {

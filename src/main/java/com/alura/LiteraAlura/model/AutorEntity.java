@@ -1,17 +1,19 @@
-package com.alura.LiteraArula.model;
+package com.alura.LiteraAlura.model;
 
-import com.alura.LiteraArula.dto.Autor;
+import com.alura.LiteraAlura.dto.Autor;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class AutorEntity {
     @Id
     @Column(columnDefinition = "TEXT")
