@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -28,6 +29,14 @@ public class BookEntity {
     @Column(name = "linguagem", columnDefinition = "TEXT")
     private List<String> linguagens;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            name = "book_autor",
+            joinColumns = @JoinColumn(name = "book_titulo"),
+            inverseJoinColumns = @JoinColumn(name = "autor_nome")
+    )
+    private List<AutorEntity> autores;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "book_sumario", joinColumns = @JoinColumn(name = "book_titulo"))
     @Column(name = "sumario", columnDefinition = "TEXT")
@@ -42,6 +51,11 @@ public class BookEntity {
         this.linguagens = book.linguagens();
         this.sumario = book.sumario();
         this.quantidadeDownloads = book.quantidadeDownloads();
+        if (book.autor() != null) {
+            this.autores = book.autor().stream()
+                    .map(AutorEntity::new)
+                    .collect(Collectors.toList());
+        }
     }
 
 }
